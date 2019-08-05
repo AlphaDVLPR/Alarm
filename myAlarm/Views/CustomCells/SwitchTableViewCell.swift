@@ -14,8 +14,26 @@ class SwitchTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLAbel: UILabel!
     @IBOutlet weak var alarmSwitch: UISwitch!
     
-    
+    var alarm: Alarm? {
+        
+        didSet {
+            
+            updateViews()
+        }
+    }
 
+    func updateViews() {
+        
+        if let alarm = alarm {
+            
+            timeLabel.text = alarm.fireDate.description
+            nameLAbel.text = alarm.name
+            alarmSwitch.isOn = alarm.enabled
+            
+        }
+        
+        
+    }
     @IBAction func switchValueChanged(_ sender: Any) {
     }
 }
