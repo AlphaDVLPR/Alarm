@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="91" id="FTw-9p-g2g">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="91" id="FTw-9p-g2g" customClass="SwitchTableViewCell" customModule="myAlarm" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FTw-9p-g2g" id="2uf-wZ-qv0">
@@ -47,6 +47,9 @@
                                                 </stackView>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IfK-Fk-9v2">
                                                     <rect key="frame" x="278" y="38.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="switchValueChanged:" destination="FTw-9p-g2g" eventType="valueChanged" id="pNs-94-sUM"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                         </stackView>
@@ -59,6 +62,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="alarmSwitch" destination="IfK-Fk-9v2" id="Q1f-og-B9r"/>
+                                    <outlet property="nameLAbel" destination="a9Y-us-lEJ" id="WuY-Uh-igM"/>
+                                    <outlet property="timeLabel" destination="Krz-2k-fav" id="hsS-rP-sAN"/>
                                     <segue destination="vgk-FI-RvN" kind="show" id="YEw-zr-mWx"/>
                                 </connections>
                             </tableViewCell>
@@ -84,20 +90,80 @@
         <scene sceneID="9yA-Oo-WSs">
             <objects>
                 <tableViewController id="vgk-FI-RvN" customClass="AlarmDetailTableViewController" customModule="myAlarm" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hDa-Sc-qHz">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="hDa-Sc-qHz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="DJa-jv-Ymv">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DJa-jv-Ymv" id="swU-Kw-Ci3">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="Lfn-Xk-dEa">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="327" id="DJa-jv-Ymv">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="327"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DJa-jv-Ymv" id="swU-Kw-Ci3">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="326.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rqm-kd-KDu">
+                                                    <rect key="frame" x="28" y="55" width="320" height="216"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="586728075.422225">
+                                                        <!--2019-08-05 20:01:15 +0000-->
+                                                    </date>
+                                                </datePicker>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rqm-kd-KDu" firstAttribute="centerY" secondItem="swU-Kw-Ci3" secondAttribute="centerY" id="ZPs-II-mch"/>
+                                                <constraint firstItem="rqm-kd-KDu" firstAttribute="centerX" secondItem="swU-Kw-Ci3" secondAttribute="centerX" id="cMJ-xz-jVK"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="52" id="sQS-Pv-yZO">
+                                        <rect key="frame" x="0.0" y="362" width="375" height="52"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sQS-Pv-yZO" id="7Nr-tv-rdd">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4cw-iO-OzP">
+                                                    <rect key="frame" x="37.5" y="11" width="300" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4cw-iO-OzP" firstAttribute="width" secondItem="7Nr-tv-rdd" secondAttribute="width" multiplier="0.8" id="5Ff-IT-Wqq"/>
+                                                <constraint firstItem="4cw-iO-OzP" firstAttribute="centerX" secondItem="7Nr-tv-rdd" secondAttribute="centerX" id="bnE-IW-w9F"/>
+                                                <constraint firstItem="4cw-iO-OzP" firstAttribute="centerY" secondItem="7Nr-tv-rdd" secondAttribute="centerY" id="iGj-i0-ozs"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="318" id="iYP-rJ-iM0">
+                                        <rect key="frame" x="0.0" y="414" width="375" height="318"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iYP-rJ-iM0" id="c4L-Yg-BZQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="317.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfB-pS-9ct">
+                                                    <rect key="frame" x="9.5" y="139" width="356" height="40"/>
+                                                    <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                                    <state key="normal" title="Enable / Disable Alarm">
+                                                        <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="mfB-pS-9ct" firstAttribute="centerY" secondItem="c4L-Yg-BZQ" secondAttribute="centerY" id="QDN-53-rre"/>
+                                                <constraint firstItem="mfB-pS-9ct" firstAttribute="width" secondItem="c4L-Yg-BZQ" secondAttribute="width" multiplier="0.95" id="XdM-xD-7pm"/>
+                                                <constraint firstItem="mfB-pS-9ct" firstAttribute="centerX" secondItem="c4L-Yg-BZQ" secondAttribute="centerX" id="wuK-qN-3SU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                         <connections>
                             <outlet property="dataSource" destination="vgk-FI-RvN" id="UaU-Ee-KEy"/>
                             <outlet property="delegate" destination="vgk-FI-RvN" id="pp3-7e-LcR"/>
@@ -106,7 +172,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9jx-Fg-0c4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1122" y="-868"/>
+            <point key="canvasLocation" x="1120.8" y="-868.51574212893559"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nZr-JT-jy0">
