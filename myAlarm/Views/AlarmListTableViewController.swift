@@ -28,6 +28,8 @@ class AlarmListTableViewController: UITableViewController {
 
         let alarm = AlarmController.shared.alarms[indexPath.row]
         
+        cell.alarm = alarm
+        cell.delegate = self
         
         return cell
     }
@@ -79,4 +81,29 @@ class AlarmListTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension AlarmListTableViewController : AlarmListTableViewDelegate {
+    
+    //Cell gets switched, calls delegate (which is the tableView)
+    
+    func switchCellSwitchValueChanged(cell: SwitchTableViewCell, isOn: Bool) {
+        
+        //Grab setting off the cell
+        
+        guard let alarm = cell.alarm,
+        
+        //Find indexPath of the cell (to be refreshed later)
+        
+        let indexPath = tableView.indexPath(for: cell) else { return }
+        
+        //Setting controller updates the setting
+        
+        AlarmController.shared.setIsOn(for: alarm, enabled: isOn)
+        
+        //Reload cell's row
+        
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
 }

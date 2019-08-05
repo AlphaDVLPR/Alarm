@@ -10,6 +10,9 @@ import UIKit
 
 class AlarmDetailTableViewController: UITableViewController {
 
+    var alarm: Alarm?
+    var alarmIsOn: Bool = true
+    
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var detailedTextView: UITextField!
     @IBOutlet weak var setAlarmButton: UIButton!
