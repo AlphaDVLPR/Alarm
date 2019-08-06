@@ -65,7 +65,7 @@
                                     <outlet property="alarmSwitch" destination="IfK-Fk-9v2" id="Q1f-og-B9r"/>
                                     <outlet property="nameLAbel" destination="a9Y-us-lEJ" id="WuY-Uh-igM"/>
                                     <outlet property="timeLabel" destination="Krz-2k-fav" id="hsS-rP-sAN"/>
-                                    <segue destination="vgk-FI-RvN" kind="show" id="YEw-zr-mWx"/>
+                                    <segue destination="vgk-FI-RvN" kind="show" identifier="showAlarm" id="YEw-zr-mWx"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -160,18 +160,18 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="318" id="iYP-rJ-iM0">
-                                        <rect key="frame" x="0.0" y="414" width="375" height="318"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="192" id="iYP-rJ-iM0">
+                                        <rect key="frame" x="0.0" y="414" width="375" height="192"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iYP-rJ-iM0" id="c4L-Yg-BZQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="317.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="191.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JAw-DS-AkE">
-                                                    <rect key="frame" x="9.5" y="138.5" width="356.5" height="40.5"/>
+                                                    <rect key="frame" x="9.5" y="50" width="356.5" height="91.5"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfB-pS-9ct">
-                                                            <rect key="frame" x="0.0" y="0.0" width="356.5" height="40.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="356.5" height="91.5"/>
                                                             <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
                                                             <state key="normal" title="Enable / Disable Alarm">
@@ -194,7 +194,7 @@
                                                 <constraint firstItem="mfB-pS-9ct" firstAttribute="leading" secondItem="c4L-Yg-BZQ" secondAttribute="leading" constant="9.5" id="dW6-E9-W2E"/>
                                                 <constraint firstItem="JAw-DS-AkE" firstAttribute="leading" secondItem="c4L-Yg-BZQ" secondAttribute="leading" constant="9.5" id="s06-W3-rrr"/>
                                                 <constraint firstAttribute="trailing" secondItem="mfB-pS-9ct" secondAttribute="trailing" constant="9" id="tmo-iu-5fe"/>
-                                                <constraint firstAttribute="bottom" secondItem="mfB-pS-9ct" secondAttribute="bottom" constant="138.5" id="zc9-3V-mpL"/>
+                                                <constraint firstAttribute="bottom" secondItem="mfB-pS-9ct" secondAttribute="bottom" constant="50" id="zc9-3V-mpL"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -211,7 +211,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="aym-b3-Iyh"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="datePicker" destination="rqm-kd-KDu" id="ULh-WX-SYo"/>
+                        <outlet property="datePicker" destination="rqm-kd-KDu" id="SXI-9P-YIH"/>
                         <outlet property="detailedTextView" destination="4cw-iO-OzP" id="Bah-fp-gp0"/>
                         <outlet property="setAlarmButton" destination="mfB-pS-9ct" id="6cy-A7-cvt"/>
                     </connections>

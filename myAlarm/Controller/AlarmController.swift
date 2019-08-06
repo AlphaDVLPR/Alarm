@@ -53,6 +53,15 @@ class AlarmController {
 
     }
     
+    func toggleEnabled(for alarm: Alarm) {
+        
+        if alarm.enabled == true {
+            alarm.enabled = false
+        } else if alarm.enabled == false{
+            alarm.enabled = true
+    }
+    }
+    
     func setIsOn(for alarm: Alarm, enabled: Bool) {
         alarm.enabled = enabled
     }

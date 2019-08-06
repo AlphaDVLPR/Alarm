@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol AlarmListTableViewDelegate: class {
+protocol SwitchTableViewCellDelegate: class {
     func switchCellSwitchValueChanged(cell: SwitchTableViewCell, isOn: Bool)
     
 }
@@ -18,7 +18,7 @@ class SwitchTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLAbel: UILabel!
     @IBOutlet weak var alarmSwitch: UISwitch!
     
-    weak var delegate: AlarmListTableViewDelegate?
+    weak var delegate: SwitchTableViewCellDelegate?
     
     var alarm: Alarm? {
         
